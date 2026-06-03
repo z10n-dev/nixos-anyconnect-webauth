@@ -33,7 +33,7 @@ let
       # the browser for the Azure AD / SAML SSO flow when nmcli triggers authentication.
       if ! ${pkgs.procps}/bin/pgrep -x nm-applet > /dev/null 2>&1; then
         echo "Starting nm-applet..."
-        ${pkgs.networkmanagerapplets}/bin/nm-applet --indicator &
+        ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
         sleep 1
       fi
 
@@ -113,7 +113,7 @@ in {
     networking.networkmanager.plugins = [ pkgs.networkmanager-openconnect ];
 
     environment.systemPackages =
-      [ (mkDispatcher "connect") (mkDispatcher "disconnect") pkgs.networkmanagerapplets ]
+      [ (mkDispatcher "connect") (mkDispatcher "disconnect") pkgs.networkmanagerapplet ]
       ++ lib.mapAttrsToList mkConnectScript cfg.connections
       ++ lib.mapAttrsToList mkDisconnectScript cfg.connections;
   };
