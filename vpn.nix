@@ -27,7 +27,7 @@ let
         ifname -- \
         vpn-type openconnect \
         -- \
-        vpn.data "gateway=$GATEWAY,protocol=anyconnect"
+        vpn.data "gateway=$GATEWAY,protocol=anyconnect,useragent=AnyConnect"
 
       # Start nm-applet if not already running — it is the secrets agent that opens
       # the browser for the Azure AD / SAML SSO flow when nmcli triggers authentication.
